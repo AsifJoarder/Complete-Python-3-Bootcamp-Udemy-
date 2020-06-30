@@ -39,3 +39,17 @@ def win_check(board, mark):
             (board[9] == mark and board[6] == mark and board[3] == mark) or  # down the right side
             (board[7] == mark and board[5] == mark and board[3] == mark) or  # diagonal
             (board[9] == mark and board[5] == mark and board[1] == mark))  # diagonal
+
+##Generating a random number to decide which player will go first
+
+def choose_first ():
+    if random.randint(0,1)==0:
+        return "Player 1"
+    else :
+        return "Player 2"
+
+
+##Checking if any empty position is left on the board
+
+def space_check (board,position):
+    return board[position]==' '
