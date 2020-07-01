@@ -53,3 +53,18 @@ def choose_first ():
 
 def space_check (board,position):
     return board[position]==' '
+
+##Sending 1-9 to the space_check method to check if empty space available
+def full_board_check(borad):
+    for i in range(1,10):
+        if(space_check(board,i)):
+            return False
+    return True
+
+##Check if input is in between 1-9 and also the place is empty
+def player_choice(board):
+    position=0
+    while not position in [1,2,3,4,5,6,7,8,9] and not space_check(board,position):
+        position =  int(input('Choose your next position: (1-9) '))
+
+    return position
