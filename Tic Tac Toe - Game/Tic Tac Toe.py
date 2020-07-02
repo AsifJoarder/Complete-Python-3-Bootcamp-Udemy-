@@ -68,3 +68,66 @@ def player_choice(board):
         position =  int(input('Choose your next position: (1-9) '))
 
     return position
+
+##Taking input from user if he/she wants to reply
+
+def reply():
+    return input(" Do you want to play again ? Type Yes or NO :").lower().startswith('y')
+
+##Main Part - Which is controlling section
+
+while True :
+    board=[' ']*10
+
+    player1_marker,player2_marker = player_input()
+    turn = choose_first()
+    print(turn + ' will go first')
+
+    play=input('Are you ready to play ? Enter Yes or No')
+
+
+    if play.lower()[0] == 'y':
+        game_on = True
+    else:
+        game_on =False
+
+    while game_on:
+        if turn == 'Player 1':
+            display_board(board)
+            position = player_choice(board)
+            place_marker(board,player1_marker,position)
+            if win_check(board,player1_marker):
+                display_board(board)
+                print('Congratulations !! Player 1 Win')
+                break;
+            else:
+                if full_board_check(board):
+                    display_board(board)
+                    print('The Game Is Draw !!')
+                    break;
+                else:
+                    turn='Player 2'
+
+        else :
+
+
+            ##  Player 2
+
+            display_board(board)
+            position = player_choice(board)
+            place_marker(board, player2_marker, position)
+            if win_check(board, player2_marker):
+                display_board(board)
+                print('Congratulations !! Player 2 Win')
+                break;
+            else:
+                if full_board_check(board):
+                    display_board(board)
+                    print('The Game Is Draw !!')
+                    break;
+                else:
+                    turn = 'Player 1'
+
+    if not reply():
+        print('Thanks For Playing !!')
+        break;
