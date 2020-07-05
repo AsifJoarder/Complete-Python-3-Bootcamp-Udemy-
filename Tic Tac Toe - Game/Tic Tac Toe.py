@@ -74,13 +74,13 @@ def player_choice(board):
 def reply():
     return input(" Do you want to play again ? Type Yes or NO :").lower().startswith('y')
 
-##Main Part - Which is controlling section
+##Main Part - Which is controlling all functions above to thing happen
 
 while True :
-    board=[' ']*10
+    board=[' ']*10   ##Creating a empty board array from 1-9
 
-    player1_marker,player2_marker = player_input()
-    turn = choose_first()
+    player1_marker,player2_marker = player_input()      ##Selecting marker
+    turn = choose_first()       ##Ranndomly select who's turn will be first
     print(turn + ' will go first')
 
     play=input('Are you ready to play ? Enter Yes or No')
@@ -91,7 +91,7 @@ while True :
     else:
         game_on =False
 
-    while game_on:
+    while game_on:      ##while loop contain things after starting the game
         if turn == 'Player 1':
             display_board(board)
             position = player_choice(board)
